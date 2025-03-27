@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Project Pythia</title>
+		<meta name="description" content="A Pythia landing page demo with Eleventy">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Project Pythia">
+		
+		<style>.postlist { counter-reset: start-from 12 }
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img{
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+video,
+iframe {
+	width: 100%;
+	height: auto;
+}
+iframe {
+	aspect-ratio: 16/9;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	flex-grow: 1;
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	gap: .5em 1em;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Project Pythia</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/" aria-current="page">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<p><span style="font-size: 2.6rem;">An education and training hub for the geoscientific Python community</span><br></p>
+<a href="posts/cookoff2025-website.html" role="button" class="btn btn-light btn-lg" style="display: flex; align-items: center; font-weight: 600; text-decoration: none; background-color: #ccc; border: rgba(var(--spt-color-dark), 1);">
+          Save the date for the 2025 Cook-off hackathon!
+  </a>
+<br>
+<a href="posts/new-cookbooks.html" role="button" class="btn btn-light btn-lg" style="display: flex; align-items: center; font-weight: 600; text-decoration: none; ">
+          Round-up of new Cookbooks from our 2024 Cook-off hackathon!
+  </a>
+<br>
+<a href="posts/fundraiser.html" role="button" class="btn btn-light btn-lg" style="display: flex; align-items: center; font-weight: 600; text-decoration: none; background-color: #ccc; border: rgba(var(--spt-color-dark), 1);">
+         Donate to support Project Pythia!
+ </a>
+ <br>
+<p><a href="about">Project Pythia</a> is the education working group for <a href="https://pangeo.io">Pangeo</a>
+and is an educational resource for the entire geoscience community.
+Together these initiatives are helping geoscientists make sense of huge volumes of
+numerical scientific data using tools that facilitate open, reproducible science,
+and building a <a href="https://en.wikipedia.org/wiki/Community_of_practice">community of practice</a>
+around these goals.</p>
+<p>Project Pythia is a home for Python-centered learning resources that are <em>open-source</em>,
+<em>community-owned</em>, <em>geoscience-focused</em>, and <em>high-quality</em>.</p>
+<a href="about">
+<div class="card" style="width:50%">
+  <div class="container">
+    <h4 id="about"><b>About</b></h4>
+  </div>
+  <picture><source type="image/avif" srcset="/eleventy-base-blog/JrX6rGmauH-1812.avif 1812w"><source type="image/webp" srcset="/eleventy-base-blog/JrX6rGmauH-1812.webp 1812w"><img loading="lazy" decoding="async" src="/eleventy-base-blog/JrX6rGmauH-1812.svg" alt="Project Pythia logo" style="width:100%" width="1812" height="431"></picture>
+</div>
+</a>
+<a href="https://pangeo.io/about">
+<div class="card" style="width:50%>
+  <div class=" container"="">
+    <h4 id="about-2"><b>About</b></h4>
+  </div>
+  <picture><source type="image/avif" srcset="/eleventy-base-blog/Yu-Y1DDYI8-879.avif 879w"><source type="image/webp" srcset="/eleventy-base-blog/Yu-Y1DDYI8-879.webp 879w"><img loading="lazy" decoding="async" src="/eleventy-base-blog/Yu-Y1DDYI8-879.png" alt="Pangeo logo" style="width:20%" width="879" height="849"></picture>
+
+</a>
+<h1 id="latest-3-posts">Latest 3 Posts</h1>
+<ol reversed="" class="postlist">
+	<li class="postlist-item">
+		<a href="/eleventy-base-blog/blog/cookoff2025-website/" class="postlist-link">Save the date for the 2025 Cook-off hackathon!</a>
+		<time class="postlist-date" datetime="2025-02-20">February 2025</time>
+	</li>
+	<li class="postlist-item">
+		<a href="/eleventy-base-blog/blog/binderhub_status/" class="postlist-link">binder.projectpythia.org Maintenance</a>
+		<time class="postlist-date" datetime="2025-01-20">January 2025</time>
+	</li>
+	<li class="postlist-item">
+		<a href="/eleventy-base-blog/blog/new-cookbooks/" class="postlist-link">Hello world, new Cookbooks!</a>
+		<time class="postlist-date" datetime="2025-01-10">January 2025</time>
+	</li>
+</ol>
+<p>8 more posts can be found in <a href="/eleventy-base-blog/blog/">the archive</a>.</p>
+<h2 id="start-learning">Start Learning</h2>
+<p>Project Pythia has several resources for you to use to start learning how to use Python
+and the technology in the Python ecosystem for the geosciences.</p>
+<h3 id="the-foundations-book">The Foundations Book</h3>
+<p>The <a href="https://foundations.projectpythia.org">Pythia Foundations Book</a> is a
+<a href="https://jupyterbook.org/">Jupyter Book</a> developed by the Pythia community to
+act as a <strong>comprehensive set of tutorials</strong> covering the <strong>foundational skills</strong>
+everyone needs to get started with <strong>computing in the open-source Python ecosystem</strong>.
+These foundational tutorials will serve as common references for more advanced and
+domain-specific content to be housed here in the Pythia Portal.</p>
+<span class="d-flex justify-content-center pt-1 pb-3">
+    <a href="https://foundations.projectpythia.org" role="button" class="btn btn-primary btn-lg">
+        Read the Pythia Foundations Book
+    </a>
+</span>
+<h3 id="pythia-cookbooks">Pythia Cookbooks</h3>
+<p>Pythia Cookbooks are collections of more advanced and domain-specific example workflows building on top of Pythia Foundations.</p>
+<span class="d-flex justify-content-center pt-1 pb-3">
+    <a href="https://cookbooks.projectpythia.org" role="button" class="btn btn-primary btn-lg">
+        Visit Pythia Cookbooks
+    </a>
+</span>
+<h3 id="the-resource-gallery">The Resource Gallery</h3>
+<p>There is a wealth of educational resources out there on the internet for learning
+Python and how to use it in the geosciences! We have attempted to gather together
+a curated and filterable list of these resources (including Pythia's own content)
+into our <a href="/eleventy-base-blog/resource-gallery">Pythia Resource Gallery</a>.
+Click the link below to see a hand-picked selection of resources for learning at
+your own pace.</p>
+<span class="d-flex justify-content-center pt-1 pb-3">
+    <a href="/eleventy-base-blog/resource-gallery.html" role="button" class="btn btn-primary btn-lg">
+        Visit the Pythia Resource Gallery
+    </a>
+</span>
+<h3 id="webinar-tutorial-series">Webinar Tutorial Series</h3>
+<p>The <a href="https://ncar-xdev.github.io/status/tutorials.html">Pythia Webinar Tutorial Series</a> is hosted regularly by the Project Pythia team. Anyone can join
+these hour-long, instructor-led interactive tutorials. Participants can
+sit back and learn, or download a Jupyter Notebook and work along with
+the instructor. Each seminar is recorded for later viewing on the
+<a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw">Project Pythia YouTube channel</a>.
+Click the link below to view past and upcoming seminars, covering a range of
+topics from beginning to advanced.</p>
+<span class="d-flex justify-content-center pt-1 pb-3">
+    <a href="https://ncar-xdev.github.io/status/tutorials.html" role="button" class="btn btn-primary btn-lg">
+        Visit the Pythia Webinar Tutorial Series
+    </a>
+</span>
+<h3 id="pythia-data-collection">Pythia Data Collection</h3>
+<p>Looking for a free, public domain geoscience data set that you can use to
+sharpen your skills while learning the Scientific Python Ecosystem? All of
+the example data used by the <a href="https://foundations.projectpythia.org">Pythia Foundations Book</a> are freely accessible.</p>
+<span class="d-flex justify-content-center pt-1 pb-3">
+    <a href="https://github.com/ProjectPythia/pythia-datasets" role="button" class="btn btn-primary btn-lg">
+        Visit the Pythia Data Repository
+    </a>
+</span>
+<!--
+<a href="/gallery.html">
+<div id="galleryCarousel" class="carousel carousel-dark slide py-4" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="_static/images/pexels-brett-sayles-1431822.jpg" height="200" width="400" class="d-block w-100" alt="1"/>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Slide 1</h5>
+                <p>This is Slide 1.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="_static/images/pexels-pixabay-209831.jpg" height="200" width="400"  class="d-block w-100" alt="2"/>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Slide 2</h5>
+                <p>This is Slide 2.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="_static/images/pexels-pixabay-531756.jpg" height="200" width="400"  class="d-block w-100" alt="3"/>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Slide 3</h5>
+                <p>This is Slide 3.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+</a>
+-->
+<h2 id="join-us">Join us!</h2>
+<p>If you have questions or want to share anything with the Project
+Pythia Team, please reach out to us through the <a href="https://discourse.pangeo.io/c/education/project-pythia/">Project Pythia
+category on the Pangeo Discourse forum</a>
+or join us at any of our <a href="#monthly-pythia-meetings">Monthly Project Meetings</a>.</p>
+<span class="d-flex justify-content-center pt-1 pb-4">
+    <a href="https://discourse.pangeo.io/c/education/project-pythia/" role="button" class="btn btn-primary btn-lg">
+        Go to Pangeo Discourse
+    </a>
+</span>
+<h3 id="contributing">Contributing</h3>
+<p>Anyone can contribute to and participate in Project Pythia!
+We conduct all of our work in the open, and all of our work is Open Source Licensed.
+We welcome contributions from anyone in the community.
+Please see our <a href="/eleventy-base-blog/contributing">Contributor’s Guide</a>
+for details on how you can get involved, and come see our work in the
+<a href="https://github.com/ProjectPythia">ProjectPythia GitHub Organization</a>.</p>
+<div class="container">
+<div class="row">
+<div class="col-12 col-md m-2">
+<a class="btn btn-primary btn-lg w-100" href="/eleventy-base-blog/contributing.html" role="button">Read our Contributor’s Guide</a>
+</div>
+<div class="col-12 col-md-3 m-2">
+<a class="btn btn-primary btn-lg w-100" href="https://github.com/ProjectPythia" role="button">Visit us on GitHub</a>
+</div>
+<div class="col-12 col-md-4 m-2">
+<a class="btn btn-primary btn-lg w-100" href="/eleventy-base-blog/code_of_conduct.html" role="button">Read our Code of Conduct</a>
+</div>
+</div>
+</div>
+<h3 id="monthly-pythia-meetings">Monthly Pythia Meetings</h3>
+<p>Project Pythia holds regular public meetings via Zoom as scheduled on the calendar below.
+Do you want to learn about the project, engage with other excited folks, or share your own needs and interests in Python learning?
+You are welcome and encouraged to join! Unsure where to start?
+Come to our monthly Pythia Community Meeting for updates, successes, and community participation across the project.
+For a smaller group and to connect with the project on social media and at conferences, you can also join the monthly Pythia Outreach Meeting.
+Please find links and information about how to join in the calendar below.
+We publish all notes and agendas of our
+<a href="https://docs.google.com/document/d/e/2PACX-1vQWQrgHs_G5XyNH5GTFYydH_woUZcyZibdxPUWLpqFUYs20WM93kdx5onwOaizC_3-tfnbreMNQbYAp/pub">Community Meetings</a>
+and <a href="https://docs.google.com/document/d/e/2PACX-1vQBAt5B24wig2eh-hxHzgJiXjKCpSeGKsw3PFizZjwH7ka71dagipKwCwQvmE-obmSOfR4Psj2lgbvU/pub">Outreach Meetings</a>.</p>
+<h3 id="meeting-and-event-calendar">Meeting &amp; Event Calendar</h3>
+<div class="iframe-4x3">
+    <iframe src="https://calendar.google.com/calendar/embed?src=c_4qpvf316afd9mv0ci7d2uiafog%40group.calendar.google.com" frameborder="0" scrolling="no"></iframe>
+</div>
+<h2 id="how-to-cite">How to Cite</h2>
+<p>The material in Project Pythia is licensed for free and open consumption and reuse. All code is served under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>, while all non-code content is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</a>. Effectively, this means you are free to share and adapt this material so long as you give appropriate credit to the Project Pythia community.</p>
+<p>To cite this project, please site our <a href="https://zenodo.org/record/8184298">NSF GEO OSE proposal</a>. Individual components of the project may be cited separately.</p>
+<blockquote>
+<p>Rose, Brian E. J., Clyne, John, May, Ryan, Munroe, James, Snyder, Amelia, Eroglu, Orhan, &amp; Tyle, Kevin. (2023). Collaborative Research: GEO OSE TRACK 2: Project Pythia and Pangeo. Zenodo. <a href="https://doi.org/10.5281/zenodo.8184298">https://doi.org/10.5281/zenodo.8184298</a></p>
+</blockquote>
+<p><a href="https://doi.org/10.5281/zenodo.8184298"><picture><source type="image/avif" srcset="/eleventy-base-blog/EOQqgyl0uA-184.avif 184w"><source type="image/webp" srcset="/eleventy-base-blog/EOQqgyl0uA-184.webp 184w"><img loading="lazy" decoding="async" src="/eleventy-base-blog/EOQqgyl0uA-184.svg" alt="DOI" width="184" height="20"></picture></a></p>
+<!-- 
+<ul>
+	<li><a href="/blog/firstpost/"><code>/blog/firstpost/</code></a></li>
+	<li><a href="/blog/secondpost/"><code>/blog/secondpost/</code></a></li>
+	<li><a href="/blog/thirdpost/"><code>/blog/thirdpost/</code></a></li>
+	<li><a href="/blog/fourthpost/"><code>/blog/fourthpost/</code></a></li>
+	<li><a href="/blog/cookoff2023/"><code>/blog/cookoff2023/</code></a></li>
+	<li><a href="/blog/fundraiser/"><code>/blog/fundraiser/</code></a></li>
+	<li><a href="/blog/cookoff2024-savethedate/"><code>/blog/cookoff2024-savethedate/</code></a></li>
+	<li><a href="/blog/cookoff2024-website/"><code>/blog/cookoff2024-website/</code></a></li>
+	<li><a href="/blog/new-cookbooks/"><code>/blog/new-cookbooks/</code></a></li>
+	<li><a href="/blog/binderhub_status/"><code>/blog/binderhub_status/</code></a></li>
+	<li><a href="/blog/cookoff2025-website/"><code>/blog/cookoff2025-website/</code></a></li>
+	<li><a href="/about/"><code>/about/</code></a></li>
+	<li><a href="/blog/"><code>/blog/</code></a></li>
+	<li><a href="/contributing/"><code>/contributing/</code></a></li>
+	<li><a href="/cookbook-guide/"><code>/cookbook-guide/</code></a></li>
+	<li><a href="/"><code>/</code></a></li>
+	<li><a href="/my-markdown/"><code>/my-markdown/</code></a></li>
+	<li><a href="/tags/"><code>/tags/</code></a></li>
+	<li><a href="/feed/feed.xml"><code>/feed/feed.xml</code></a></li>
+</ul> -->
+
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/` was built on 2025-03-27T21:21:40.761Z -->
+		<script type="module" src="/eleventy-base-blog/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>

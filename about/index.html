@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Project Pythia</title>
+		<meta name="description" content="A Pythia landing page demo with Eleventy">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Project Pythia">
+		
+		<style>/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img{
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+video,
+iframe {
+	width: 100%;
+	height: auto;
+}
+iframe {
+	aspect-ratio: 16/9;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	flex-grow: 1;
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	gap: .5em 1em;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Project Pythia</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/" aria-current="page">About</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="about-project-pythia">About Project Pythia</h1>
+<p>Project Pythia is the education working group for <a href="https://pangeo.io">Pangeo</a>
+and is an educational resource for the entire geoscience community.
+Project Pythia is a home for Python-centered learning resources that are <em>open-source</em>,
+<em>community-owned</em>, <em>geoscience-focused</em>, and <em>high-quality</em>.</p>
+<h2 id="why-do-we-need-project-pythia">Why do we need Project Pythia?</h2>
+<p>Scientists working in a multitude of disciplines rely heavily on
+computing technologies for their research. Numerical simulations
+run on supercomputers are used in the study of climate, weather,
+atmospheric chemistry, wildfires, space weather, and more. Similarly,
+a tremendous volume of digital data produced by numerical simulations,
+or observations made with instruments, are analyzed with the help
+of powerful computers and software. Thus, today’s scientists require
+not only expertise in their scientific discipline, but also require
+high-level technical skills to effectively analyze, manipulate, and
+make sense of potentially vast volumes of data. Computing environments
+change rapidly, and two technologies that have emerged and are being
+adopted by scientific communities relatively recently are Cloud
+Computing platforms and a software ecosystem of scientific tools
+built around the open source programming language called Python.
+Project Pythia provides a public, web-accessible training
+resource that will help educate current, and aspiring, earth
+scientists to more effectively use both the Scientific Python
+Ecosystem and Cloud Computing to make sense of huge volumes of
+numerical scientific data.</p>
+<h2 id="why-the-name-pythia">Why the name <em>Pythia</em>?</h2>
+<p>In ancient Greek mythology, the god <a href="https://en.wikipedia.org/wiki/Apollo">Apollo</a>
+is said to have slain the monstrous <a href="https://en.wikipedia.org/wiki/Python_(mythology)">Python</a>.
+Apollo's temple was later served by the <a href="https://en.wikipedia.org/wiki/Oracle">Oracle</a>
+of <a href="https://en.wikipedia.org/wiki/Delphi">Delphi</a>,
+who was known as the <a href="https://en.wikipedia.org/wiki/Pythia">Pythia</a>.</p>
+<p>Like the Oracle of old, Project Pythia will help you make sense of things that seem mysterious.
+We will not, however, <em>slay</em> your <a href="https://www.python.org">Python</a>,
+but instead help you <em>improve</em> it -- and help you to help others do the same!</p>
+<h2 id="who-is-project-pythia">Who is Project Pythia?</h2>
+<p>Pythia is an open and welcoming community! Look <a href="/eleventy-base-blog/#join-us">here</a> for info
+on how to get involved.</p>
+<h2 id="project-pythia-goals">Project Pythia Goals</h2>
+<ol>
+<li>
+<p><em>The Pythia Portal:</em> A searchable online portal that
+provides scientists at any point in their career with educational
+content and real-world examples needed to learn how to navigate and
+integrate the myriad packages within the Python ecosystem for the
+geosciences.</p>
+</li>
+<li>
+<p><em>Cloud-Deployable Pythia Platforms:</em> A light-weight,
+Binder-based platform that will make it possible to launch portal
+content in customizable executable environments in the Cloud with
+only a “single click.”</p>
+</li>
+</ol>
+<h2 id="presentations-about-project-pythia">Presentations about Project Pythia</h2>
+<p>To learn more about Project Pythia and its history, see this list of presentations (listed in reverse-chronological order):</p>
+<table>
+<thead>
+<tr>
+<th>Forum</th>
+<th>Date</th>
+<th>Presenter</th>
+<th>Format</th>
+<th>Title (with link)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pangeo Showcase</td>
+<td>2024-10</td>
+<td>Brian Rose</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1-RS9DviJnOzwlRMNv1786UMYJ8PmQU-ohu0vo51NM0Q/edit?usp=sharing">Project Pythia Cookbooks</a></td>
+</tr>
+<tr>
+<td>Ocean Sciences</td>
+<td>2024-02</td>
+<td>Brian Rose</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1tvABElX-0CgiuzMfY7XFY-gsXzGUXqWV6k2qJeTw5bk/edit?usp=sharing">The Project Pythia Cookbook Initiative</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2024-01</td>
+<td>Drew Camron</td>
+<td>slides</td>
+<td><a href="https://drive.google.com/file/d/1nZfWWozBKQzVCYpKUqWPX51MEgSAhgfM/view?usp=sharing">Project Pythia: Three Years of Community Building Through Open Source Technology and Education</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2024-01</td>
+<td>Kevin Tyle</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1zMsoCg1RMHGZDuLLV0QsZB6NwKE7CKo5_8iFAGDGj6o/edit?usp=drive_link">Cooking up a Storm with Project Pythia</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2024-01</td>
+<td>Brian Rose</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1nG3iJr6Q7_ktKHg6PXzna7DMp4HDiFgS7scqjKLtXNA/edit?usp=sharing">Project Pythia's vision</a></td>
+</tr>
+<tr>
+<td>AGU</td>
+<td>2023-12</td>
+<td>Brian Rose</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1J6wgvypXxYZ4uTQHsquyH_tlY6KiQXBcxb3cwdd3FUM/edit?usp=sharing">The Project Pythia Cookbook Initiative</a></td>
+</tr>
+<tr>
+<td>AGU</td>
+<td>2023-12</td>
+<td>Julia Kent</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1wm0RxaswVh_YJFcYsHduONsYiYNLc69f0XuHnP7Vfh8/edit?usp=sharing">Project Pythia: Empowering Geoscientists through Open-Source, Open-Science Collaboration</a></td>
+</tr>
+<tr>
+<td>SciPy</td>
+<td>2023-07</td>
+<td>Kevin Tyle / Drew Camron</td>
+<td>slides</td>
+<td><a href="https://drive.google.com/file/d/125Wk3TTImHqSYLkgPNsy4_M_w3aENgLr/view?usp=sharing">Better (Open-source) Homes and Gardens with Project Pythia</a></td>
+</tr>
+<tr>
+<td>Pythia Cook-off 2023</td>
+<td>2023-06</td>
+<td>Brian Rose / Drew Camron</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1NUnkZLyf4HXkPfQATjoUAs1s9cQAAtTlmVUMwQQmvMg/edit?usp=sharing">Cook-off 2023 Introduction: All about Pythia, Cookbooks, and the Cook-off!</a></td>
+</tr>
+<tr>
+<td>CI2023 Reproducibility Challenge</td>
+<td>2023-05</td>
+<td>Brian Rose</td>
+<td>slides</td>
+<td><a href="https://doi.org/10.5281/zenodo.7915657">Project Pythia: Learning Python Geoscience Software</a></td>
+</tr>
+<tr>
+<td>ISS</td>
+<td>2023-04</td>
+<td>Julia Kent</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/13MH5968BAfR6IxplGVbM2bSJ6uRoa5Wkzk5axqvmCX4/edit?usp=sharing">How Project Pythia Leverages GitHub for Community Contributions</a></td>
+</tr>
+<tr>
+<td>ESDS forum</td>
+<td>2023-03</td>
+<td>Brian Rose</td>
+<td>slides</td>
+<td><a href="https://drive.google.com/file/d/1goieS2kjajD93fPSKm6aP2GroNotV9zu/view?usp=sharing">Project Pythia Cookbooks</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2023-01</td>
+<td>Drew Camron</td>
+<td>talk</td>
+<td><a href="https://ams.confex.com/ams/103ANNUAL/meetingapp.cgi/Paper/421702">Project Pythia: A Community Update on Open and Sustainable Geoscientific Python Education</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2023-01</td>
+<td>Max Grover</td>
+<td>talk</td>
+<td><a href="https://ams.confex.com/ams/103ANNUAL/meetingapp.cgi/Paper/417388">ARMing the Open Science Community with Radar Cookbooks: from the Colorado Rockies to the Gulf Coast and Beyond</a></td>
+</tr>
+<tr>
+<td>AGU</td>
+<td>2022-12</td>
+<td>Kevin Tyle</td>
+<td>slides</td>
+<td><a href="https://eppro01.ativ.me/src/EventPilot/php/express/web/planner.php?id=AGU22">Project Pythia - Transforming Software Engineering Education for GeoScience</a></td>
+</tr>
+<tr>
+<td>AGU</td>
+<td>2022-12</td>
+<td>Julia Kent</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/19oWV7LULijtIYObrNW3ccoRLNFV9lYA0APuPlXAx_z8/edit?usp=sharing">Project Pythia: A Pangeo Community Tool for Open-Source Education</a></td>
+</tr>
+<tr>
+<td>SciPy</td>
+<td>2022-07</td>
+<td>Kevin Tyle</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1tyPkDVDKZX5BsWk9j-TTwiKT8mNQBBZG/edit?usp=sharing&amp;ouid=114646835079460879999&amp;rtpof=true&amp;sd=true">A Community-built Training Resource for the Geoscientific Python Software Ecosystem</a></td>
+</tr>
+<tr>
+<td>ESDS forum</td>
+<td>2022-05</td>
+<td>Julia Kent</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1NGLFwqJdsu53CtsCqZLO3dxQtRcelOsm/edit?usp=sharing&amp;ouid=107342162699810699865&amp;rtpof=true&amp;sd=true">Project Pythia: A Community Learning Resource for Geoscientists</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2022-01</td>
+<td>Drew Camron</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1NuV5sI3oGhvuUt_s8hzmj0UA9MqCtlxWTADbJHjr9ow/edit?usp=sharing">Project Pythia: A community update</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2022-01</td>
+<td>Kevin Tyle</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1D8kkpsX4CE3rT5QQliH6JfKYeY76fT1gClIEzboxgko/">Leveraging Project Pythia in an Advanced Geoscience &amp; Visualization Course</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2022-01</td>
+<td>Max Grover</td>
+<td>slides</td>
+<td><a href="https://docs.google.com/presentation/d/1aTw0DmaZ-7PQtWXxQqdik825r5mOoYRe/edit?usp=sharing&amp;ouid=113419461755911727326&amp;rtpof=true&amp;sd=true">Rethinking CESM Diagnostics through the Lens of Earth System Data Science</a></td>
+</tr>
+<tr>
+<td>AGU</td>
+<td>2021-12</td>
+<td>Kevin Paul</td>
+<td>e-poster</td>
+<td><a href="https://agu2021fallmeeting-agu.ipostersessions.com/Default.aspx?s=CF-91-F4-F8-35-E4-B7-40-F2-8C-F6-86-76-97-11-02">Pangeo and Project Pythia: Helping Geoscientists Navigate the Scientific Python Ecosystem</a></td>
+</tr>
+<tr>
+<td>AGU</td>
+<td>2021-12</td>
+<td>Kevin Paul</td>
+<td>e-poster</td>
+<td><a href="https://agu2021fallmeeting-agu.ipostersessions.com/Default.aspx?s=25-22-8E-6D-6E-CB-B4-E9-6D-08-78-2A-61-2F-62-09">Project Pythia: A Resource to Help Geoscientists Navigate the Scientific Python Ecosystem</a></td>
+</tr>
+<tr>
+<td>AGU</td>
+<td>2021-12</td>
+<td>Julia Kent</td>
+<td>abstract</td>
+<td><a href="https://t.co/hQ1wGQZB18">ESDS Educational Efforts</a></td>
+</tr>
+<tr>
+<td>Pangeo Showcase</td>
+<td>2021-06</td>
+<td>Brian Rose</td>
+<td>video + slides</td>
+<td><a href="https://discourse.pangeo.io/t/june-23-2021-project-pythia-a-community-learning-resource-for-python-based-computing-in-the-geosciences/1601">Project Pythia: a community learning resource for Python-based computing in the geosciences</a></td>
+</tr>
+<tr>
+<td>AMS</td>
+<td>2021-01</td>
+<td>John Clyne</td>
+<td>video</td>
+<td><a href="https://youtu.be/_UxlrwB_evo">Project Pythia: a community learning resource for geoscientists</a></td>
+</tr>
+</tbody>
+</table>
+
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/about/` was built on 2025-03-27T21:21:40.761Z -->
+		<script type="module" src="/eleventy-base-blog/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>

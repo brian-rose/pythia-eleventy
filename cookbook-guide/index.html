@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Project Pythia</title>
+		<meta name="description" content="A Pythia landing page demo with Eleventy">
+		<link rel="alternate" href="/eleventy-base-blog/feed/feed.xml" type="application/atom+xml" title="Project Pythia">
+		
+		<style>/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img{
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+video,
+iframe {
+	width: 100%;
+	height: auto;
+}
+iframe {
+	aspect-ratio: 16/9;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	flex-grow: 1;
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	gap: .5em 1em;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Project Pythia</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Blog</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<heading-anchors>
+				
+<h1 id="cookbook-contributors-guide">Cookbook Contributor's Guide</h1>
+<p>Project Pythia Cookbooks are collections of more advanced and domain-specific example
+workflows building on top of <a href="https://foundations.projectpythia.org/landing-page.html">Pythia Foundations</a>.
+They are <a href="https://en.wikipedia.org/wiki/Earth_science">geoscience</a>-focused
+and should direct the reader towards the Foundations material for any required
+background knowledge.</p>
+<p>The following is a step-by-step guide to creating a new Cookbook and getting it hosted on the <a href="https://cookbooks.projectpythia.org">Project Pythia Cookbook Gallery</a>.</p>
+<p>Before you begin, ask yourself if the content you are developing for a cookbook would be better suited as an addition to an existing cookbook. The best place to discuss cookbook ideas is the <a href="https://discourse.pangeo.io/c/education/project-pythia/60">Project Pythia category of the Pangeo Discourse</a>.</p>
+<blockquote>
+<p>These instructions assume that your goal is to contribute a new Cookbook to the community-maintained collection housed on the <a href="https://cookbooks.projectpythia.org">Pythia Cookbook Gallery</a>.</p>
+<p>Using the Pythia Cookbook template to create reproducible documents housed elsewhere is definitely possible! But we don't focus on that use case in this guide.</p>
+</blockquote>
+<p>If you're not looking to create a <em>new</em> Cookbook, but rather looking for guidance on contributing to <em>existing</em> Cookbooks, first make sure you're comfortable with the <a href="https://foundations.projectpythia.org/foundations/github/github-workflows.html#forking-workflow">GitHub forking workflow</a>, then take a look at the section below on &quot;Pull Requests and previews&quot;.</p>
+<h2 id="data-access">Data access</h2>
+<p>Before developing your cookbook, you should consider how it will access the data you plan to use. In loose order of preference, we recommend the following:</p>
+<ol>
+<li>Rely on data that is already freely available and accessible with tools in the ecosystem. Point to Foundations or other cookbooks for tool how-to guides if needed. Examples include the <a href="https://projectpythia.org/cmip6-cookbook/">CMIP6 Cookbook</a> and the <a href="https://projectpythia.org/cesm-lens-aws-cookbook/">CESM LENS on AWS Cookbook</a></li>
+<li>Focus on representative subsets of data that can be packaged alongside the cookbook in-repo. An example is the <a href="https://projectpythia.org/landsat-ml-cookbook/README.html">Landsat ML Cookbook</a></li>
+<li>Discuss your larger data storage needs with the Pythia team. We are currently experimenting with cloud object storage for Cookbooks via NSF JetStream2.</li>
+<li>Provide the tools and/or clear documentation for accessing the data that you have stored somewhere else</li>
+</ol>
+<h2 id="use-the-template">Use the template</h2>
+<ol>
+<li>If you don't already have a GitHub account, create one by following the <a href="https://foundations.projectpythia.org/foundations/getting-started-github.html">Getting Started with GitHub guide</a></li>
+<li>On the <a href="https://github.com/ProjectPythia/cookbook-template">Cookbook Template repository</a>, click &quot;Use this template → Create a new repository&quot;</li>
+<li>Choose &quot;Include all branches&quot;.</li>
+<li>Give your repository a descriptive name followed by <code>-cookbook</code> (e.g., <code>hydrology-cookbook</code>, <code>hpc-cookbook</code>, <code>cesm-cookbook</code>) and a description</li>
+<li>Create the repository. Your browser will be directed to the newly created repository under your GitHub account</li>
+<li>Under Settings → Pages, ensure that GitHub Pages is enabled by checking that <code>Branch</code> is set to &quot;gh-pages&quot;, and the folder set to &quot;gh-pages/(root)&quot;. If it is not, change the Branch from &quot;None&quot; to &quot;gh-pages/(root)&quot; and click &quot;Save&quot;</li>
+<li>Under Settings → Actions → General, make sure that &quot;Read and write permissions&quot; is selected. <picture><source type="image/avif" srcset="/eleventy-base-blog/cookbook-guide/m1y1BxSylA-901.avif 901w"><source type="image/webp" srcset="/eleventy-base-blog/cookbook-guide/m1y1BxSylA-901.webp 901w"><img loading="lazy" decoding="async" src="/eleventy-base-blog/cookbook-guide/m1y1BxSylA-901.png" width="901" alt="Screenshot 2023-01-13 at 3 12 47 PM" height="371"></picture></li>
+</ol>
+<p>Your cookbook is now ready to have content added!</p>
+<blockquote>
+<p>In the rest of this guide, we assume that you are familiar with the basics of using git and GitHub. If not, we strongly recommend reading through our <a href="https://foundations.projectpythia.org/foundations/getting-started-github.html">GitHub tutorials in Foundations</a>.</p>
+</blockquote>
+<h2 id="transfer-your-cookbook-repo-to-the-projectpythia-organization">Transfer your cookbook repo to the ProjectPythia organization</h2>
+<p>In order for your Cookbook to be included in the Gallery, the source repository needs to be housed within the <a href="https://github.com/ProjectPythia">Project Pythia GitHub organization</a>.</p>
+<p>You can keep your repository in your personal GitHub space while you're developing your content if that works better for you. Repository ownership can be transfered at any time.</p>
+<p>However, we recommend transfering to the Pythia organization early, for a few reasons:</p>
+<ul>
+<li>Fewer settings to tweak later</li>
+<li>Easier to get help from the Pythia infrastructure team</li>
+<li>Encourages collaboration</li>
+</ul>
+<blockquote>
+<p>You're still in control! You will always retain write access to your Cookbook repository even after transfering ownership to the Pythia organization.</p>
+<p>Also, <em>don't worry about breaking anything!</em> Your repo will not affect any other Project Pythia content until you initiate the request to list it on the <a href="https://cookbooks.projectpythia.org">Cookbook Gallery</a> (see below...)</p>
+</blockquote>
+<h3 id="steps-to-transfer-the-repository">Steps to transfer the repository</h3>
+<ol>
+<li><a href="https://discourse.pangeo.io/c/education/project-pythia/60">Contact the Pythia team via the Pangeo Discourse</a> (or otherwise) to let us know about your cookbook.</li>
+<li>You will get an invitation to join the the <a href="https://github.com/ProjectPythia">ProjectPythia organization</a>.</li>
+<li>Accept the GitHub invitation. <em>Welcome to the team!</em></li>
+<li>Once you are a member of the organization, navigate to the Settings of your cookbook repository and scroll down to the <strong>Danger Zone</strong>.</li>
+<li>Click &quot;Transfer&quot;.</li>
+<li>Select or type &quot;ProjectPythia&quot;, confirm, and transfer.</li>
+<li>When prompted about which teams to give access to, select &quot;core&quot;. <em>This will enable the Pythia maintenance team to have full access to your repository.</em></li>
+</ol>
+<p>Once you have successfully transfered the repository, you'll most likely want to make a <a href="https://foundations.projectpythia.org/foundations/github/github-cloning-forking.html">personal fork and a local clone of the repository</a> so that you can continue to develop and collaborate on the Cookbook via the <a href="https://foundations.projectpythia.org/foundations/github/github-workflows.html#forking-workflow">forking workflow</a>.</p>
+<h2 id="customize-the-paths-in-your-repository">Customize the paths in your repository</h2>
+<p>Whether the repository lives in your personal GitHub space or on the ProjectPythia organization, there are several paths and links in the repository code that need to be updated to reflect the current home of your cookbook source. This step is necessary to ensure that the cookbook building and publishing infrastructure works as intended.</p>
+<p>Fortunately this is quick and easy. Just run our custom GitHub action called <code>trigger-replace-links</code>: Navigate to &quot;Actions&quot; → &quot;trigger-replace-links&quot; → &quot;Run workflow&quot;.</p>
+<h2 id="set-up-the-computational-environment">Set up the computational environment</h2>
+<p>You'll most likely want to do your edits in a <a href="https://foundations.projectpythia.org/foundations/github/github-cloning-forking.html">local clone of the repository</a> on your laptop or wherever your are running your notebooks.</p>
+<h3 id="customizing-your-environment-file">Customizing your environment file</h3>
+<ol>
+<li>Within <code>environment.yml</code> (in the root of the repository), change <code>name</code> from <code>cookbook-dev</code> to <code>&lt;your-cookbook-name&gt;-dev</code> (e.g. <code>cesm-cookbook-dev</code>) and add all required libraries and other dependencies under <code>dependencies:</code>. Commit the changes.</li>
+<li>Create the <a href="https://foundations.projectpythia.org/foundations/conda.html">conda environment</a> with <code>conda env create -f environment.yml</code>. If it crashes, try running <code>conda config --set channel_priority strict</code></li>
+<li>Activate your environment with <code>conda activate &lt;env-name&gt;</code></li>
+</ol>
+<p>You're now ready to create and run awesome notebooks.</p>
+<h3 id="customizing-your-github-actions">Customizing your GitHub actions</h3>
+<p>Your repository includes automation for building and publishing your Cookbook, powered by <a href="https://docs.github.com/en/actions">GitHub Actions</a>. Now that you have created a custom name for your conda environment (<code>&lt;your-cookbook-name&gt;-dev</code>), you need to edit three files found in the <code>.github/workflows</code> section of your repo:</p>
+<ul>
+<li><code>.github/workflows/nightly-build.yaml</code></li>
+<li><code>.github/workflows/publish-book.yaml</code></li>
+<li><code>.github/workflows/trigger-book-build.yaml</code></li>
+</ul>
+<p>In each of these files, in the field called <code>environment_name:</code>, replace  <code>cookbook-dev</code> with the name you used in your <code>environment.yml</code> file (probably <code>&lt;your-cookbook-name&gt;-dev</code>). Commit these changes.</p>
+<blockquote>
+<p>If these workflow files look mysterious and you don't know anything about how GitHub Actions work, don't worry! The Pythia team will help with any problems that arise with the Cookbook automation.</p>
+</blockquote>
+<h2 id="develop-your-cookbook">Develop your cookbook</h2>
+<h3 id="add-notebooks">Add notebooks</h3>
+<p>To add content, you should edit (and duplicate as necessary) the notebook template <code>notebooks/notebook-template.ipynb</code>. Using this template will help keep your content consistent with the expected Cookbook style.</p>
+<p>You can add subfolders to organize your notebook files as necessary. However, the organization of the notebooks within the published book is dictated by the table of contents file <code>_toc.yml</code>. <em>Edit this file to add your chapters.</em> Take a look at the <a href="https://github.com/ProjectPythia/radar-cookbook/blob/main/_toc.yml"><code>radar-cookbook/_toc.yml</code></a> for example syntax, or consult the <a href="https://jupyterbook.org/en/stable/structure/toc.html">JupyterBook documentation</a>.</p>
+<h3 id="customize-your-home-page">Customize your home page</h3>
+<p>The file <code>README.md</code> serves as the homepage of your Cookbook, so it should be descriptive. Edit this file as appropriate, following guidance in the file itself.</p>
+<h3 id="build-your-cookbook-locally">Build your Cookbook locally</h3>
+<p>You should be able to build your new Cookbook on your local machine by running this command from the root of the repository:</p>
+<pre><code>jupyter-book build .
+</code></pre>
+<p>from the root of your repository. This will execute all your notebooks and package them into a book styled with the Pythia theme.</p>
+<p>If the build is successful, you should be able to preview the result in a web browser by running</p>
+<pre><code>open _build/html/index.html
+</code></pre>
+<h3 id="strip-output-from-your-notebooks-before-committing">Strip output from your notebooks before committing</h3>
+<p>Wherever feasible, we recommend only committing bare, unexecuted notebooks into your Cookbook repository. There are a few reasons:</p>
+<ul>
+<li>The notebooks are executed automatically each time the book is built</li>
+<li>Pre-existing output in the notebooks will have no effect on the published book</li>
+<li>Better reproducibility of your content</li>
+<li>The repo stays cleaner and leaner. Diffs of notebook changes are easier to interpret.</li>
+</ul>
+<p>To strip a notebook, in a Jupyter Lab session, go to &quot;Kernel&quot; → &quot;Restart Kernel and Clear Output of All Cells...&quot;. Save your notebook, then commit.</p>
+<p>You're ready to push content up to GitHub and trigger the automated publishing pipeline.</p>
+<h2 id="deploying-your-cookbook">Deploying your Cookbook</h2>
+<p>Pythia Cookbooks are not just collections of notebooks! They are backed by GitHub-based automation that handles building, testing, previewing, and publishing the books online.</p>
+<h3 id="about-the-publishing-pipeline">About the publishing pipeline</h3>
+<p>Any time you push new content to the <code>main</code> branch of your Cookbook repo, actions are triggered that do the following:</p>
+<ul>
+<li>Create an up-to-date build environment using your <code>environment.yml</code> file</li>
+<li>Execute all the notebooks in that environment</li>
+<li>Package the book into a styled website</li>
+<li>Check all the links in the website to make sure they are valid</li>
+<li>Deploy the styled website so it's visible to the world</li>
+</ul>
+<h3 id="where-is-my-book">Where is my book?</h3>
+<p>The URL of your published book will depend on where the source repository is housed.</p>
+<ul>
+<li>If the repo is in the <a href="https://github.com/ProjectPythia">Project Pythia organization</a>, the book is published to <code>https://projectpythia.org/[YOUR_COOKBOOK_REPO_NAME]/</code></li>
+<li>If the repo is in your personal GitHub space, the book is published to <code>https://[YOUR_GITHUB_USERNAME].github.io/[YOUR_COOKBOOK_REPO_NAME]/</code></li>
+</ul>
+<p>Here's a handy trick for finding your published book:</p>
+<ul>
+<li>On the home page of your GitHub repo, look for the &quot;About&quot; section in the right-hand side bar.</li>
+<li>Click the &quot;gear&quot; icon next to &quot;About&quot;</li>
+<li>Select the checkbox &quot;Use your GitHub Pages website&quot;.</li>
+<li>Is that checkbox missing? That likely means you're looking at the &quot;About&quot; section of your <em>personal fork</em>, not the upstream fork. Navigate back to <code>https://github.com/ProjectPythia/[YOUR_COOKBOOK_REPO_NAME]/</code> and look for it there.</li>
+</ul>
+<p>The link to your published book will then be displayed on the home page of the repo.</p>
+<pre class="language-{Note}" tabindex="0"><code class="language-{Note}">If you have transfered your repository to the ProjectPythia organization and also made a personal fork, the publishing pipeline automation will _only run on the upstream fork on the ProjectPythia organization_ so there's only one copy of the "published" book.
+
+It's possible to enable the workflows on your personal fork, but usually unneccesary if you preview your work via Pull Requests (see next section)!</code></pre>
+<h3 id="pull-requests-and-previews">Pull Requests and previews</h3>
+<p>Collaboration on Cookbooks is best done via <a href="https://foundations.projectpythia.org/foundations/github/github-pull-request.html">Pull Requests</a>. Every PR on a Cookbook repository will trigger a &quot;Preview&quot; version of our publishing pipeline. The entire book is re-built from the updated source and the preview site is hosted at a temporary online location. This way, the team can safely see what the end product will look like after the PR is merged.</p>
+<p>The only difference between the &quot;preview&quot; pipeline and the regular publishing pipeline is the URL to which the rendered website is deployed. A temporary preview location is used, leaving the main book untouched until the PR is merged.</p>
+<p>To propose changes to a Cookbook, or even just to test something out temporarily, follow the <a href="https://foundations.projectpythia.org/foundations/github/github-workflows.html#forking-workflow">forking workflow</a>: make changes on a feature branch of your personal fork, and open a Pull Request from that branch to the main branch of the upstream fork. This will trigger the preview.</p>
+<p>A link to the preview will appear as a comment on the Pull Request once the publishing actions are complete. <em>If the link shows up but you get a 404 error when you click on it the first time, just wait a few minutes! There are some lags before the preview is fully deployed.</em></p>
+<p>Not satisfied? Keep making changes! Every new push to the feature branch on your personal fork will trigger another rebuild, and an updated preview. The preview will be deleted if and when the PR is closed or merged.</p>
+<h3 id="building-on-the-pythia-binder">Building on the Pythia Binder</h3>
+<blockquote>
+<p>By default, notebooks are executed on the free GitHub Actions service. This works fine for most lightweight Cookbooks. If your book is building and publishing succesfully, you can safely ignore this section!</p>
+</blockquote>
+<p>For Cookbooks with substantial compute requirements, you have the option of routing notebook execution to a specialized Binder service maintained by the Project Pythia team.</p>
+<p>Here's how:</p>
+<ul>
+<li>Edit your <code>_config.yml</code> in the root of your repo.</li>
+<li>Change the field <code>execute_notebooks</code> from <code>cache</code> to <code>binder</code>.</li>
+<li>Commit that change and open a Pull Request to your main branch.</li>
+<li>That will trigger a build and preview as usual, but the notebook execution will happen on the Binder.</li>
+<li>If all is well, merge the changes, and all further builds will work this way.</li>
+</ul>
+<blockquote>
+<p>The Binder uses your <code>environment.yml</code> file to create an image of an execution environment, which is stored for reuse. The time to execute your notebooks can vary, depending on whether the Binder needs to build a new image or not.</p>
+</blockquote>
+<h2 id="publish-your-cookbook-on-the-pythia-gallery">Publish your Cookbook on the Pythia Gallery</h2>
+<p>Once you're happy with your content and your Cookbook is building and deploying properly, it's time to think about submiting it for inclusion in the <a href="https://cookbooks.projectpythia.org/">Cookbook Gallery</a>!</p>
+<blockquote>
+<p>Cookbooks don't need to be &quot;finished&quot; in order to accepted in the Gallery! Cookbooks are typically accepted so long as they run cleanly, are free of obvious errors, and have some relevant new content.</p>
+<p>Cookbooks are meant to be living documents. We encourage authors to open GitHub issues to track progress on adding and updating content.</p>
+</blockquote>
+<p>At this stage, there are a few more steps to get things ready to go.</p>
+<h3 id="authorship-and-the-citation-cff-file">Authorship and the <code>CITATION.cff</code> file</h3>
+<p>Cookbooks are scholarly objects. As part of the publication process, your Cookbook will get a citeable DOI (via <a href="https://zenodo.org">Zenodo</a>). Just as for journal publications, you need to make decisions about who gets credited for authorship.</p>
+<p>This information is managed manually through the file <code>CITATION.cff</code> in the root of your repository. This will determine the names displayed on your card in the <a href="https://cookbooks.projectpythia.org/">gallery</a> as well as your DOI-based citation.</p>
+<p>Edit <code>CITATION.cff</code> as follows:</p>
+<ul>
+<li>If you haven't already, <em>remove the people already listed in this file</em>. These are the credited authors of the <a href="https://github.com/ProjectPythia/cookbook-template">Cookbook Template</a> only, and they should not be included in your author list (unless one of them also happens to be a content author for your book).</li>
+<li>Set your Cookbook title</li>
+<li>Write a short description / abstract (this will also appear on the <a href="https://cookbooks.projectpythia.org/">gallery</a>)</li>
+<li>Include names of all content authors
+<ul>
+<li>ORCID and other metadata for each author is optional but helpful</li>
+</ul>
+</li>
+<li>Under the <code>name:</code> field, change &quot;Cookbook Template contributors&quot; to &quot;[Your Cookbook Name] contributors&quot;</li>
+</ul>
+<blockquote>
+<p>GitHub automatically tracks all contributions to your repository. The folks who help with infrastructure fixes, content reviews, etc., are considered &quot;contributors&quot; but not primary authors. We include the &quot;contributors&quot; as a single group in <code>CITATION.cff</code> to acknowledge this!</p>
+</blockquote>
+<h3 id="gallery-tags">Gallery tags</h3>
+<p>The file <code>_gallery_info.yml</code> determines how your Cookbook will be findable on the <a href="https://cookbooks.projectpythia.org/">gallery</a>. Edit this file with the following:</p>
+<ul>
+<li>Replace <code>thumbnail.png</code> with your own image (which will appear on your gallery card)</li>
+<li>Edit the tags under <code>domains</code> and <code>packages</code> as appropriate. Check out the existing filters on the <a href="https://cookbooks.projectpythia.org/">gallery page</a> to get a sense of how these are used.</li>
+</ul>
+<h3 id="generate-a-doi">Generate a DOI</h3>
+<p>Once all the above steps are complete and your <code>CITATION.cff</code> file is correct, you are ready to &quot;release&quot; a tagged version of your book and generate your first DOI. We've tried to make this as painless as possible, but there are a few more steps to take initially.</p>
+<p>As always, reach out to a Pythia team member for help with any of these steps!</p>
+<ol>
+<li>Go to <a href="https://zenodo.org">zenodo.org</a> and log in. If you have never used Zenodo, you will need to create an account. We recommend authenticating through GitHub.</li>
+<li>Once logged in to Zenodo, under &quot;My account&quot;, click on &quot;GitHub&quot;.</li>
+<li>You will see a long list of GitHub repositories, both your personal repos as well as the ProjectPythia repos.</li>
+<li>Find your Cookbook repository (which needs to be housed in the ProjectPythia organization at this point), and toggle the &quot;On&quot; switch.</li>
+<li>Now, leave Zenodo and go back to GitHub</li>
+<li>Make a new release of your Cookbook repository! This is on the right nav side of the page from your code-view in the repository.</li>
+<li>The DOI will now be generated automatically. The DOI badge on your homepage should link to the new archive that was just created on Zenodo.</li>
+</ol>
+<h3 id="initiate-the-cookbook-review-process">Initiate the Cookbook review process</h3>
+<p>If you haven't already, now is a great time to <a href="https://discourse.pangeo.io/c/education/project-pythia/60">contact the Project Pythia team</a> to let them know about your new Cookbook. You will be assigned a Cookbook advocate from the Pythia maintenance team.
+They will open an issue on your Cookbook repository with the <a href="cookbook-tasklist.md">Cookbook Checklist</a> for you to document your completion of the above process, plus a few more GitHub-specific steps.
+Once you complete this process, your Cookbook will be ready for review and publication!</p>
+<h3 id="submit-your-cookbook-to-the-gallery">Submit your Cookbook to the Gallery</h3>
+<p>Click the button below to request addition of your Cookbook to the <a href="https://cookbooks.projectpythia.org">Project Pythia Cookbook Gallery</a>.</p>
+<span class="d-flex justify-content-center py-4">
+    <a href="https://github.com/ProjectPythia/cookbook-gallery/issues/new?assignees=ProjectPythia%2Feducation&labels=content%2Ccookbook-gallery-submission&template=update-cookbook-gallery.yaml&title=Update+Gallery+with+new+Cookbook" role="button" class="btn btn-light btn-lg" style="display: flex; align-items: center; font-weight: 600; text-decoration: none;">
+        Submit a new Cookbook
+    </a>
+</span>
+<ol>
+<li>Click the above button, or use this link to the <a href="https://github.com/ProjectPythia/cookbook-gallery/issues/new?assignees=ProjectPythia%2Feducation&amp;labels=content%2Ccookbook-gallery-submission&amp;template=update-cookbook-gallery.yaml&amp;title=Update+Gallery+with+new+Cookbook">new cookbook PR template</a>.</li>
+<li>Add the root name of your cookbook repository (e.g., just &quot;cesm-cookbook&quot;, not the whole URL) and any other information you'd like the team to know.</li>
+<li>The Pythia team will take a look at your content, and work with you on any necessary updates and fixes.</li>
+</ol>
+<p><strong><em>THANK YOU FOR YOUR AMAZING CONTRIBUTION TO THIS COMMUNITY RESOURCE!</em></strong></p>
+
+
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/cookbook-guide/` was built on 2025-03-27T21:21:40.760Z -->
+		<script type="module" src="/eleventy-base-blog/dist/xbxy_EL6cU.js"></script>
+	</body>
+</html>

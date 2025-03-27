@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Blog Title</title>
+  <subtitle>This is a longer description about your blog.</subtitle>
+  <link href="https://example.com/eleventy-base-blog/feed/feed.xml" rel="self" />
+  <link href="https://example.com/eleventy-base-blog/" />
+  <updated>2025-02-20T00:00:00Z</updated>
+  <id>https://example.com/eleventy-base-blog/</id>
+  <author>
+    <name>Your Name</name>
+  </author>
+  <entry>
+    <title>Save the date for the 2025 Cook-off hackathon!</title>
+    <link href="https://example.com/eleventy-base-blog/blog/cookoff2025-website/" />
+    <updated>2025-02-20T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/cookoff2025-website/</id>
+    <content type="html">&lt;p&gt;The 2025 Pythia Cookbook Cook-Off Hackathon will take place August
+5-8, at the NCAR Mesa Lab, located in Boulder, Colorado.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://projectpythia.org/pythia-cookoff-2025/&quot;&gt;The website for the event is live&lt;/a&gt;. Registration is not open at this time.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>binder.projectpythia.org Maintenance</title>
+    <link href="https://example.com/eleventy-base-blog/blog/binderhub_status/" />
+    <updated>2025-01-20T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/binderhub_status/</id>
+    <content type="html">&lt;p&gt;Our &lt;a href=&quot;https://binder.projectpythia.org&quot;&gt;BinderHub&lt;/a&gt; will be offline from &lt;strong&gt;1400 UTC 20 Jan 2025&lt;/strong&gt; through &lt;strong&gt;1500 UTC 20 Jan 2025&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Our &lt;a href=&quot;https://binder.pythia.2i2c.cloud&quot;&gt;alternate BinderHub&lt;/a&gt; will be available as normal during that time.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Hello world, new Cookbooks!</title>
+    <link href="https://example.com/eleventy-base-blog/blog/new-cookbooks/" />
+    <updated>2025-01-10T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/new-cookbooks/</id>
+    <content type="html">&lt;p&gt;The Project Pythia team is excited to announce the publication of new community-contributed Cookbooks from our successful &lt;a href=&quot;https://projectpythia.org/pythia-cookoff-2024/&quot;&gt;2024 Pythia Cook-Off hackathon&lt;/a&gt;, which was held June 11 - 14 2024, at the NSF NCAR&#39;s Mesa Lab in Boulder, Colorado and online.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cookbooks.projectpythia.org&quot;&gt;Cookbooks&lt;/a&gt; are geoscience-flavored collections of tutorials, recipes, and reproducible example workflows for Python-based data analysis and visualization. Cookbooks are supported by a rich computational infrastructure enabling collaborative authoring, automated health-checking, and interactive use. Cookbooks undergo a review process, are citable by DOI, and are tested and maintained by the Project Pythia community.&lt;/p&gt;
+&lt;p&gt;It&#39;s time to celebrate the Cook-off projects that have made it across the finish line. &lt;em&gt;&lt;a href=&quot;https://cookbooks.projectpythia.org&quot;&gt;Watch this space!&lt;/a&gt;&lt;/em&gt; There are several more exciting Cookbooks still in development.&lt;/p&gt;
+&lt;h2 id=&quot;cookbook-round-up&quot;&gt;Cookbook round-up&lt;/h2&gt;
+&lt;p&gt;Here you can find brief descriptions and links to the new (and significantly updated) books on the &lt;a href=&quot;https://cookbooks.projectpythia.org&quot;&gt;Pythia Cookbook Gallery&lt;/a&gt;. Try also filtering the &lt;a href=&quot;https://cookbooks.projectpythia.org&quot;&gt;gallery&lt;/a&gt; with the new &amp;quot;events&amp;quot; dropdown menu!&lt;/p&gt;
+&lt;h3 id=&quot;eofs-cookbook&quot;&gt;&lt;a href=&quot;https://projectpythia.org/eofs-cookbook/&quot;&gt;EOFs Cookbook&lt;/a&gt;&lt;/h3&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/kX9tM9zwMH-3000.avif 3000w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/kX9tM9zwMH-3000.webp 3000w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/kX9tM9zwMH-3000.png&quot; alt=&quot;EOF cookbook thumbnail&quot; width=&quot;3000&quot; height=&quot;750&quot;&gt;&lt;/picture&gt;
+&lt;p&gt;&lt;strong&gt;Authors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/r-ford&quot;&gt;Robert Ford&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zenodo.org/badge/latestdoi/656765685&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/jcQ_1MIUyi-191.avif 191w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/jcQ_1MIUyi-191.webp 191w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/jcQ_1MIUyi-191.svg&quot; alt=&quot;DOI&quot; width=&quot;191&quot; height=&quot;20&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This Cookbook covers Empirical Orthogonal Function (EOF) analysis and its application to climate data. EOF analysis is an essential tool for studying the variability of the atmosphere-ocean system. Meteorological and oceanographic data is noisy and multidimensional, but an EOF analysis allows us to pull out patterns from the data that might otherwise be difficult to find. The goal of this cookbook is to provide background and context to the analysis alongside practical examples of carrying out the analysis using Python packages.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt;
+&lt;a href=&quot;https://github.com/ProjectPythia/eofs-cookbook/graphs/contributors&quot;&gt;
+&lt;img src=&quot;https://contrib.rocks/image?repo=ProjectPythia/eofs-cookbook&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;ocean-biogeochemistry-cookbook&quot;&gt;&lt;a href=&quot;https://projectpythia.org/ocean-bgc-cookbook/&quot;&gt;Ocean Biogeochemistry Cookbook&lt;/a&gt;&lt;/h3&gt;
+&lt;img class=&quot;modal-img&quot; src=&quot;https://raw.githubusercontent.com/ProjectPythia/ocean-bgc-cookbook/main/coccolithophore_kristen_krumhardt.png&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Authors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/rmshkv&quot;&gt;Lev Romashkov&lt;/a&gt; and &lt;a href=&quot;https://github.com/kristenkrumhardt&quot;&gt;Kristen Krumhardt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://zenodo.org/badge/latestdoi/739552419&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/ytJ_7LciPW-191.avif 191w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/ytJ_7LciPW-191.webp 191w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/ytJ_7LciPW-191.svg&quot; alt=&quot;DOI&quot; width=&quot;191&quot; height=&quot;20&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This Cookbook covers working with various sources of ocean biogeochemistry data, including Community Earth System Model (CESM) output and observational data. It provides a brief introduction to some metrics important to ocean biogeochemistry, from physical quantities like temperature to biological quantities like plankton biomass. It also demonstrates some of the data science techniques used to work with this information, and provides an introduction to the relationship between modeled and observational estimates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt;
+&lt;a href=&quot;https://github.com/rmshkv/ocean-bgc-cookbook/graphs/contributors&quot;&gt;
+&lt;img src=&quot;https://contrib.rocks/image?repo=rmshkv/ocean-bgc-cookbook&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;investigating-interhemispheric-precipitation-changes-over-the-past-millennium&quot;&gt;&lt;a href=&quot;https://projectpythia.org/paleoPCA-cookbook/&quot;&gt;Investigating interhemispheric precipitation changes over the past millennium&lt;/a&gt;&lt;/h3&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/1u4V3MPxjN-500.avif 500w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/1u4V3MPxjN-500.webp 500w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/1u4V3MPxjN-500.png&quot; class=&quot;modal-img&quot; alt=&quot;LinkedEarth Logo&quot; width=&quot;500&quot; height=&quot;187&quot;&gt;&lt;/picture&gt;
+&lt;p&gt;&lt;strong&gt;Authors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/khider&quot;&gt;Deborah Khider&lt;/a&gt;, &lt;a href=&quot;https://github.com/sriharisundar&quot;&gt;Hari Sundar&lt;/a&gt;, and &lt;a href=&quot;https://github.com/varunratnakar&quot;&gt;Varun Ratnakar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zenodo.org/badge/latestdoi/813352705&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/XxQipWmhkt-191.avif 191w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/XxQipWmhkt-191.webp 191w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/XxQipWmhkt-191.svg&quot; alt=&quot;DOI&quot; width=&quot;191&quot; height=&quot;20&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This Cookbook covers paleoclimate model-data comparison using spatio-temporal pattern obtained using Principal Component Analysis (PCA).&lt;/p&gt;
+&lt;p&gt;Paleoclimate observations obtained from tree rings or the geochemical composition of speleothems, ice and sediments provide an out-of-sample validation of climate models. However, comparing the output of climate models directly with the paleoclimate observations is difficult: (1) they are often expressed in different quantities (i.e., temperature vs ring width), (2) paleoclimate observations have large time uncertainties, (3) paleoclimate observations often incorporate more than one environmental signal (i.e., temperature AND moisture).&lt;/p&gt;
+&lt;p&gt;Recently, &lt;a href=&quot;https://doi.org/10.1073/pnas.2120015119&quot;&gt;Steinman et al. (2022)&lt;/a&gt; used PCA analysis to compare model and data output. Here, we use a similar approach with the &lt;a href=&quot;https://www2.cesm.ucar.edu/models/cesm1.2/&quot;&gt;CESM Last Millennium simulation&lt;/a&gt; and proxy records stored on the &lt;a href=&quot;https://lipdverse.org&quot;&gt;LiPDverse&lt;/a&gt;. This repository contains paleoclimate datasets that have been curated by the community and are archived in a standard format, facilitating analysis.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt;
+&lt;a href=&quot;https://github.com/ProjectPythia/paleoPCA-Cookbook/graphs/contributors&quot;&gt;
+&lt;img src=&quot;https://contrib.rocks/image?repo=ProjectPythia/paleoPCA-Cookbook&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;esgf-cookbook&quot;&gt;&lt;a href=&quot;https://projectpythia.org/esgf-cookbook/&quot;&gt;ESGF Cookbook&lt;/a&gt;&lt;/h3&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/aWE1zp9yXq-200.avif 200w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/aWE1zp9yXq-200.webp 200w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/aWE1zp9yXq-200.png&quot; class=&quot;modal-img&quot; alt=&quot;thumbnail&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&lt;/picture&gt;
+&lt;p&gt;&lt;strong&gt;Authors:&lt;/strong&gt; &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/@mgrover1&quot;&gt;Max Grover&lt;/a&gt;, &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/@nocollier&quot;&gt;Nathan Collier&lt;/a&gt;, &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/@cehbrecht&quot;&gt;Carsten Ehbrecht&lt;/a&gt;, &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/@jacnugent&quot;&gt;Jacqueline Nugent&lt;/a&gt;, and &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/@griverat&quot;&gt;Gerardo Rivera Tello&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://doi.org/10.5281/zenodo.11663067&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/d3w_Y3YuFE-191.avif 191w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/d3w_Y3YuFE-191.webp 191w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/d3w_Y3YuFE-191.svg&quot; alt=&quot;DOI&quot; width=&quot;191&quot; height=&quot;20&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This Cookbook covers how to access and analyze datasets that can be accessed from Earth System Grid Federation (ESGF) cyberinfrastructure.&lt;/p&gt;
+&lt;p&gt;This cookbook focuses on highlighting analysis recipes, as well as data acccess methods, all accesible within the Python programming language. This cookbook also spans beyond the scope of a single Climate Model Intercomparison Project (ex. CMIP6), expanding to other experiments/datasets such as CMIP5 and obs4MIPs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt;
+&lt;a href=&quot;https://github.com/ProjectPythia/esgf-cookbook/graphs/contributors&quot;&gt;
+&lt;img src=&quot;https://contrib.rocks/image?repo=ProjectPythia/esgf-cookbook&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;radar-cookbook&quot;&gt;&lt;a href=&quot;https://projectpythia.org/radar-cookbook/&quot;&gt;Radar Cookbook&lt;/a&gt;&lt;/h3&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/3eXL1z-NH_-300.avif 300w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/3eXL1z-NH_-300.webp 300w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/3eXL1z-NH_-300.png&quot; class=&quot;modal-img&quot; alt=&quot;radar thumbnail&quot; width=&quot;300&quot; height=&quot;92&quot;&gt;&lt;/picture&gt;
+&lt;p&gt;&lt;strong&gt;Authors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/mgrover1&quot;&gt;Max Grover&lt;/a&gt;, &lt;a href=&quot;https://github.com/zssherman&quot;&gt;Zachary Sherman&lt;/a&gt;, &lt;a href=&quot;https://github.com/gewitterblitz&quot;&gt;Milind Sharma&lt;/a&gt;, &lt;a href=&quot;https://github.com/aladinor&quot;&gt;Alfonso Ladino&lt;/a&gt;, &lt;a href=&quot;https://github.com/crystalclearwx&quot;&gt;Crystal Camron&lt;/a&gt;, and &lt;a href=&quot;https://github.com/TakashiUNUMA&quot;&gt;Takashi Unuma&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zenodo.org/badge/latestdoi/479066261&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/BxYj8tVq6g-184.avif 184w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/BxYj8tVq6g-184.webp 184w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/BxYj8tVq6g-184.svg&quot; alt=&quot;DOI&quot; width=&quot;184&quot; height=&quot;20&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pythia&#39;s very first cookbook continues to grow!&lt;/p&gt;
+&lt;p&gt;This cookbook provides the essential materials to learning how to work with weather radar data using Python. Most of the curriculum is focused around the Python ARM Toolkit. Once you go through this material, you will have the skills to read in radar data, apply data corrections, and visualize your data, building off of the core foundational Python material covered in the Foundations Book&lt;/p&gt;
+&lt;p&gt;The Example Workflows section contains a growing collection of real-world case studies.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt;
+&lt;a href=&quot;https://github.com/ProjectPythia/radar-cookbook/graphs/contributors&quot;&gt;
+&lt;img src=&quot;https://contrib.rocks/image?repo=ProjectPythia/radar-cookbook&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;arco-era-5-interactive-visualization-cookbook&quot;&gt;&lt;a href=&quot;https://projectpythia.org/ERA5_interactive-cookbook/&quot;&gt;ARCO ERA-5 Interactive Visualization Cookbook&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/0_Yd9Ui2wl-300.avif 300w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/0_Yd9Ui2wl-300.webp 300w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/0_Yd9Ui2wl-300.png&quot; class=&quot;modal-img&quot; alt=&quot;ERA5 thumbnail&quot; width=&quot;300&quot; height=&quot;115&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Authors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/ktyle&quot;&gt;Kevin Tyle&lt;/a&gt;, &lt;a href=&quot;https://github.com/Michael-Barletta&quot;&gt;Michael Barletta&lt;/a&gt;, &lt;a href=&quot;https://github.com/negin513&quot;&gt;Negin Sobhani&lt;/a&gt;, &lt;a href=&quot;https://github.com/ncote&quot;&gt;Nicholas Cote&lt;/a&gt; , &lt;a href=&quot;https://github.com/hrhampapura&quot;&gt;Harsha Hampapura&lt;/a&gt; , and &lt;a href=&quot;https://github.com/philip2c&quot;&gt;Philip Chmielowiec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zenodo.org/badge/latestdoi/657280462&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/V9_6DahHNW-191.avif 191w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/V9_6DahHNW-191.webp 191w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/V9_6DahHNW-191.svg&quot; alt=&quot;DOI&quot; width=&quot;191&quot; height=&quot;20&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This Cookbook covers accessing, regridding, and visualizing the &lt;a href=&quot;https://www.ecmwf.int/en/forecasts/dataset/ecmwf-reanalysis-v5&quot;&gt;ECMWF Reanalysis version 5&lt;/a&gt; (aka &lt;strong&gt;ERA-5&lt;/strong&gt;) dataset in a &lt;a href=&quot;https://www.frontiersin.org/articles/10.3389/fclim.2021.782909/full&quot;&gt;Analysis Ready, Cloud Optimized&lt;/a&gt; (aka &lt;strong&gt;ARCO&lt;/strong&gt;) format.&lt;/p&gt;
+&lt;p&gt;The ERA-5 represents the current state-of-the-art meteorological reanalysis, extending from well back into the 20th century to the present. While the data is freely-available for download by archival centers such as &lt;a href=&quot;https://www.copernicus.eu/en&quot;&gt;Copernicus&lt;/a&gt; and &lt;a href=&quot;https://rda.ucar.edu/&quot;&gt;RDA&lt;/a&gt;, the data format and directory structure are typically not well-suited for interactive exploration. Specifically, parameters of interest are stored in individual files, for a limited period of time.&lt;/p&gt;
+&lt;p&gt;A team at Google Cloud and Research has made interactive exploration much more tenable by representing the data in &lt;a href=&quot;https://zarr.readthedocs.io/en/stable/&quot;&gt;Zarr&lt;/a&gt; format.&lt;/p&gt;
+&lt;p&gt;This Cookbook demonstrates how to do the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Access parameters of interest from the Zarr store on Google Cloud&lt;/li&gt;
+&lt;li&gt;Regrid from model native (Gaussian) to lat-lon (Cartesian) coordinates&lt;/li&gt;
+&lt;li&gt;Plot a map at a specific time using Matplotlib and Cartopy&lt;/li&gt;
+&lt;li&gt;Create interactive visualizations, leveraging the &lt;a href=&quot;https://holoviz.org&quot;&gt;Holoviz&lt;/a&gt; ecosystem&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt;
+&lt;a href=&quot;https://github.com/ProjectPythia/ERA5_interactive-cookbook/graphs/contributors&quot;&gt;
+&lt;img src=&quot;https://contrib.rocks/image?repo=ProjectPythia/ERA5_interactive-cookbook&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;wavelet-cookbook&quot;&gt;&lt;a href=&quot;https://projectpythia.org/wavelet-cookbook/&quot;&gt;Wavelet Cookbook&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/Xc9uGqUGeH-300.avif 300w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/Xc9uGqUGeH-300.webp 300w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/Xc9uGqUGeH-300.png&quot; class=&quot;modal-img&quot; alt=&quot;Wavelet thumbnail&quot; width=&quot;300&quot; height=&quot;317&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Authors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/cyschneck&quot;&gt;Cora Schneck&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zenodo.org/badge/latestdoi/815311051&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/3lcwjnBkWC-191.avif 191w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/3lcwjnBkWC-191.webp 191w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/3lcwjnBkWC-191.svg&quot; alt=&quot;DOI&quot; width=&quot;191&quot; height=&quot;20&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This Cookbook covers how to work with wavelets in Python. Wavelets are a powerful tool to analyze time-series data. When data frequencies vary over time, wavelets can be applied to analysis trends and overcome the time/frequency limitations of Fourier Transforms&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt;
+&lt;a href=&quot;https://github.com/ProjectPythia/wavelet-cookbook/graphs/contributors&quot;&gt;
+&lt;img src=&quot;https://contrib.rocks/image?repo=ProjectPythia/wavelet-cookbook&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;the-2024-cook-off&quot;&gt;The 2024 Cook-off&lt;/h2&gt;
+&lt;h3 id=&quot;in-pictures&quot;&gt;In pictures&lt;/h3&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/bcU85Q_Yl2-900.avif 900w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/bcU85Q_Yl2-900.webp 900w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/bcU85Q_Yl2-900.jpeg&quot; alt=&quot;2024 Cookoff group photo&quot; width=&quot;900&quot; height=&quot;338&quot;&gt;&lt;/picture&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/5F6t0h0Cyb-250.avif 250w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/5F6t0h0Cyb-250.webp 250w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/5F6t0h0Cyb-250.jpeg&quot; alt=&quot;Breakout group&quot; width=&quot;250&quot; height=&quot;187&quot;&gt;&lt;/picture&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/WIAjSnUtH1-250.avif 250w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/WIAjSnUtH1-250.webp 250w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/WIAjSnUtH1-250.jpeg&quot; alt=&quot;Cookoff attendees at Mesa Lab&quot; width=&quot;250&quot; height=&quot;187&quot;&gt;&lt;/picture&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/NzzMqopwpq-250.avif 250w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/NzzMqopwpq-250.webp 250w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/new-cookbooks/NzzMqopwpq-250.jpeg&quot; alt=&quot;Virtual presentation&quot; width=&quot;250&quot; height=&quot;187&quot;&gt;&lt;/picture&gt;
+&lt;h3 id=&quot;by-the-numbers&quot;&gt;By the numbers&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Number of attendees: 92 (49 in-person, 43 remote)&lt;/li&gt;
+&lt;li&gt;Number of attendees receiving travel support from Project Pythia: 16&lt;/li&gt;
+&lt;li&gt;Career stage:
+&lt;ul&gt;
+&lt;li&gt;14% undergrad&lt;/li&gt;
+&lt;li&gt;29% graduate&lt;/li&gt;
+&lt;li&gt;14% postdoc&lt;/li&gt;
+&lt;li&gt;43% faculty or staff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Gender of attendees:
+&lt;ul&gt;
+&lt;li&gt;59% men&lt;/li&gt;
+&lt;li&gt;30% women&lt;/li&gt;
+&lt;li&gt;11% other&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Number of individual project breakout groups: 9&lt;/li&gt;
+&lt;li&gt;New cookbooks published to the &lt;a href=&quot;https://cookbooks.projectpythia.org&quot;&gt;Pythia Gallery&lt;/a&gt;: 5 &lt;em&gt;(as of this writing)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Heavily revised cookbooks: 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;want-to-get-involved&quot;&gt;Want to get involved?&lt;/h2&gt;
+&lt;a role=&quot;button&quot; class=&quot;btn btn-light btn-lg&quot; style=&quot;display: flex; align-items: center; font-weight: 600; text-decoration: none; &quot;&gt;
+          SAVE THE DATE! Project Pythia is hosting our next Cookbook Cook-off hackathon event at the NSF NCAR&#39;s Mesa Lab, August 5-8 2025.
+  &lt;/a&gt;
+&lt;p&gt;Do you have some feedback or ideaa for a new Cookbook project? Unsure how to get started? We&#39;d love to hear from you at any of our &lt;a href=&quot;https://projectpythia.org/#monthly-pythia-meetings&quot;&gt;open meetings&lt;/a&gt;, through the &lt;a href=&quot;https://discourse.pangeo.io/c/education/project-pythia/&quot;&gt;Pangeo Discourse&lt;/a&gt;, or via any of our social media. Join us at our next Cook-off 2025!&lt;/p&gt;
+&lt;p&gt;Take a look at our &lt;a href=&quot;https://projectpythia.org/cookbook-guide.html&quot;&gt;guide for Cookbook contributors&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Website is live for the 2024 Cook-off hackathon</title>
+    <link href="https://example.com/eleventy-base-blog/blog/cookoff2024-website/" />
+    <updated>2024-01-08T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/cookoff2024-website/</id>
+    <content type="html">&lt;p&gt;The 2024 Pythia Cookbook Cook-Off Hackathon will take place June
+11 - 14, at the NCAR Mesa Lab, located in Boulder, Colorado.&lt;/p&gt;
+&lt;p&gt;Check out &lt;a href=&quot;https://projectpythia.org/pythia-cookoff-2024/&quot;&gt;this preliminary website for the hackathon&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Pythia Cookbook Cook-Off Hackathon 2024 - Save the Date!</title>
+    <link href="https://example.com/eleventy-base-blog/blog/cookoff2024-savethedate/" />
+    <updated>2023-08-29T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/cookoff2024-savethedate/</id>
+    <content type="html">&lt;p&gt;The 2024 Pythia Cookbook Cook-Off Hackathon will take place June
+11 - 14, at the NCAR Mesa Lab, located in Boulder, Colorado. Save
+the date. More details coming soon!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Donate to Support Project Pythia!</title>
+    <link href="https://example.com/eleventy-base-blog/blog/fundraiser/" />
+    <updated>2023-06-28T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/fundraiser/</id>
+    <content type="html">&lt;h2 id=&quot;you-can-make-an-impact-on-our-community&quot;&gt;You can make an impact on our community!&lt;/h2&gt;
+&lt;p&gt;By donating to support Project Pythia you are investing in an important educational resource for the entire geoscience community, from students to late career. Project Pythia is an education working group helping geoscientists make sense of huge volumes of numerical scientific data using tools that facilitate open, reproducible science, and building a community of practice around these goals. Project Pythia is a home for Python-centered learning resources that are open-source, community-owned, geoscience-focused, and high-quality.&lt;/p&gt;
+&lt;p&gt;Donations contribute to outreach and community engagement activities, such as participant support at our annual hackathons.&lt;/p&gt;
+&lt;h2 id=&quot;friends-of-the-national-center&quot;&gt;Friends of the National Center&lt;/h2&gt;
+&lt;p&gt;Friends of the National Center is the fundraising arm of the University Corporation for Atmospheric Research (UCAR), which manages the National Science Foundation National Center for Atmospheric Research. UCAR is a non-profit organization, so all donations to Project Pythia are tax-deductible to the fullest extent allowed by law.&lt;/p&gt;
+&lt;p&gt;We accept donations through the following ways: &lt;br&gt;
+&lt;strong&gt;Online&lt;/strong&gt; – Click the Donate Button on the right (we accept credit cards, Paypal and ApplePay). &lt;br&gt;
+&lt;strong&gt;Check&lt;/strong&gt; – Mail your check made out to UCAR and send it to: &lt;br&gt;
+UCAR – Friends of the National Center &lt;br&gt;
+Attn: Sarah Swanson &lt;br&gt;
+PO BOX 3000 &lt;br&gt;
+Boulder, CO 80307 &lt;br&gt;
+Please include in the memo: Donation for Project Pythia &lt;br&gt;
+&lt;strong&gt;Stock gifts, ACH Transfers, etc.&lt;/strong&gt; – Please reach out to Friends of the National Center at info@friendsofthenationalcenter.org&lt;/p&gt;
+&lt;script&gt;
+(function(f,u,n,r,a,i,s,e){var data={window:window,document:document,tag:&quot;script&quot;,data:&quot;funraise&quot;,orgId:f,uri:u,common:n,client:r,script:a};var scripts;var funraiseScript;data.window[data.data]=data.window[data.data]||[];if(data.window[data.data].scriptIsLoading||data.window[data.data].scriptIsLoaded)return;data.window[data.data].loading=true;data.window[data.data].push(&quot;init&quot;,data);scripts=data.document.getElementsByTagName(data.tag)[0];funraiseScript=data.document.createElement(data.tag);funraiseScript.async=true;funraiseScript.src=data.uri+data.common+data.script+&quot;?orgId=&quot;+data.orgId;scripts.parentNode.insertBefore(funraiseScript,scripts)})(&#39;79cd49fa-a550-4baa-a6d9-1913aae826df&#39;,&#39;https://assets.funraise.io&#39;,&#39;/widget/common/2.0&#39;,&#39;/widget/client&#39;,&#39;/inject-form.js&#39;);
+&lt;/script&gt;
+&lt;script&gt;
+    window.funraise.push(&#39;create&#39;, { form: 36005 }, {
+        selector: &#39;#fr-placed-form-container-36005&#39;,
+        type: &#39;grow_contained&#39;,
+    });
+&lt;/script&gt;
+&lt;div id=&quot;fr-placed-form-container-36005&quot; style=&quot;min-height: 816px;&quot;&gt;&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Pythia Cookbook Cook-Off Hackathon 2023</title>
+    <link href="https://example.com/eleventy-base-blog/blog/cookoff2023/" />
+    <updated>2023-06-28T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/cookoff2023/</id>
+    <content type="html">&lt;p&gt;One year from when Project Pythia first introduced Cookbooks, NCAR hosted Project Pythia’s first “Cookbook Cook-Off” hackathon.&lt;/p&gt;
+&lt;p&gt;Pythia Cookbooks provide example end-to-end geoscientific workflows and are an important tool towards reproducible science efforts.&lt;/p&gt;
+&lt;p&gt;36 members of the Project Pythia team and larger Pangeo community gathered at NCAR’s Mesa Lab in Boulder, CO and remotely for a hybrid hacakthon June 20-23, 2023 to expand content and improve infrastructure support for Cookbook development.&lt;/p&gt;
+&lt;p&gt;During the hackthon, significant additions were made to our Radar Cookbook and infrastructure changes were made to better support DOI citations of Cookbooks. We are expecting 10 novel Cookbooks to join our gallery soon.&lt;/p&gt;
+&lt;p&gt;From our post-hackathon exit survey, everyone enjoyed the event, felt that they learned new skills and that their contributions were valued. One scientist commented, “The hackathon for me has become a great place to get a sense of a community. Seeing people enthusiastic about coding up notebooks that would benefit the research community is a gateway for someone starting to code in Python.” This comment mirrors the efforts of Project Pythia as a community-owned resource.&lt;/p&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/cookoff2023/ILr1Sfo-mh-4032.avif 4032w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/cookoff2023/ILr1Sfo-mh-4032.webp 4032w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/cookoff2023/ILr1Sfo-mh-4032.jpeg&quot; alt=&quot;Cookoff Image&quot; width=&quot;4032&quot; height=&quot;3024&quot;&gt;&lt;/picture&gt;
+</content>
+  </entry>
+  <entry>
+    <title>This is my fourth post</title>
+    <link href="https://example.com/eleventy-base-blog/blog/fourthpost/" />
+    <updated>2018-09-30T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/fourthpost/</id>
+    <content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
+&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
+&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/fourthpost/xbVnp_hAou-350.avif 350w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/fourthpost/xbVnp_hAou-350.webp 350w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/fourthpost/xbVnp_hAou-350.png&quot; alt=&quot;A possum parent and two possum kids hanging from the iconic red balloon&quot; width=&quot;350&quot; height=&quot;685&quot;&gt;&lt;/picture&gt;
+&lt;h2 id=&quot;section-header&quot;&gt;Section Header&lt;/h2&gt;
+&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>This is my third post.</title>
+    <link href="https://example.com/eleventy-base-blog/blog/thirdpost/" />
+    <updated>2018-08-24T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/thirdpost/</id>
+    <content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;h3 id=&quot;this-is-a-very-long-heading-that-i-want-to-wrap-this-is-a-very-long-heading-that-i-want-to-wrap-this-is-a-very-long-heading-that-i-want-to-wrap-this-is-a-very-long-heading-that-i-want-to-wrap&quot;&gt;This is a very long heading that I want to wrap This is a very long heading that I want to wrap This is a very long heading that I want to wrap This is a very long heading that I want to wrap&lt;/h3&gt;
+&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
+&lt;pre class=&quot;language-js&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// this is a command&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;myCommand&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Test with a line break above this line.&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;Test&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;heading-with-a-link&quot;&gt;Heading with a &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/thirdpost/#code&quot;&gt;link&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// this is a command
+function myCommand() {
+	let counter = 0;
+	counter++;
+}
+
+// Test with a line break above this line.
+console.log(&#39;Test&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;section-header&quot;&gt;Section Header&lt;/h2&gt;
+&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>This is my second post with a much longer title.</title>
+    <link href="https://example.com/eleventy-base-blog/blog/secondpost/" />
+    <updated>2018-07-04T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/secondpost/</id>
+    <content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
+&lt;h2 id=&quot;section-header&quot;&gt;Section Header&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/firstpost/&quot;&gt;First post&lt;/a&gt;
+&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/thirdpost/&quot;&gt;Third post&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
+&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
+</content>
+  </entry>
+</feed>
